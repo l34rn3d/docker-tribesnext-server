@@ -23,7 +23,7 @@ sudo unzip \
 # -- logging
 rsyslog \
 # -- utilities
-sed less vim file \
+sed less vim file nano \
 # --- wine
 ${WINEVER} \
 # -- display
