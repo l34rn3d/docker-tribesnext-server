@@ -283,6 +283,6 @@ cp -r $TMPBASE/TacoServer/Classic/. $INSBASE/Tribes2/GameData/Classic/.
 # -- install TacoMaps
 echo "Installing TacoMaps..."
 mkdir -p $INSBASE/Tribes2/GameData/Classic/Maps
-cp -r $TMPBASE/TacoMaps/ $INSBASE/Tribes2/GameData/Classic/Maps/
+cp -r $TMPBASE/TacoMaps/. $INSBASE/Tribes2/GameData/Classic/Maps/
 
 exit 0
