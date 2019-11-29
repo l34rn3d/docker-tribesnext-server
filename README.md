@@ -29,11 +29,7 @@ No volumes are used
 
 NB: the `--rm` arg will destroy the container when stopped; internal ports (666) can be mapped to available host ports (27999) per container
 ```
-docker run -d --rm \
--p 27999:666/tcp \
--p 28000:28000/udp \
---name tribesnext-server \
-tribesnext-server:latest
+docker run -d --rm -p 27999:666/tcp -p 28000:28000/udp --name tribesnext-server tribesnext-server:latest
 ```
 
 **Stop container**

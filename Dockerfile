@@ -1,5 +1,5 @@
 FROM multiarch/debian-debootstrap:i386-jessie
-MAINTAINER sairuk
+MAINTAINER sairuk battlelore chocotaco
 
 # ENVIRONMENT
 ARG SRVUSER=gameserv
@@ -7,11 +7,16 @@ ARG SRVUID=1000
 ARG SRVDIR=/tmp/tribes2/
 ENV INSTDIR=/home/${SRVUSER}/.wine/drive_c/Dynamix/Tribes2/
 
+# WINE VERSION: wine = 1.6, wine-development = 1.7.29 for i386-jessie
+ENV WINEVER=wine-development
+
 # UPDATE IMAGE
-RUN apt-get -y update && apt-get -y upgrade
+RUN apt-get -y update
+RUN apt-get -y upgrade
 
 
 # DEPENDENCIES
+RUN dpkg --add-architecture i386
 RUN apt-get -y install \
 # -- access
 sudo unzip \
@@ -20,9 +25,11 @@ rsyslog \
 # -- utilities
 sed less vim file \
 # --- wine
-wine \
+${WINEVER} \
 # -- display
-xvfb
+xvfb \
+# -- git clone
+git-core
 
 
 # CLEAN IMAGE
