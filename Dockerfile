@@ -1,4 +1,4 @@
-FROM multiarch/debian-debootstrap:i386-jessie
+FROM i386/ubuntu:latest
 MAINTAINER sairuk battlelore chocotaco
 
 # ENVIRONMENT
@@ -23,7 +23,7 @@ sudo unzip \
 # -- logging
 rsyslog \
 # -- utilities
-sed less vim file nano \
+sed less vim file nano wget \
 # --- wine
 ${WINEVER} \
 # -- display
@@ -36,9 +36,8 @@ git-core
 RUN apt-get -y clean && apt-get -y autoremove
 
 
-# ENV
 # -- shutup installers
-ENV DEBIAN_FRONTEND noninteractive
+ARG DEBIAN_FRONTEND=noninteractive
 
 
 # USER

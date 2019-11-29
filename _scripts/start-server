@@ -7,5 +7,5 @@ find ${BASEDIR} -name \*.dso -execdir /bin/rm {} \;
 
 cd $WINEPREFIX/drive_c/Dynamix/Tribes2/GameData 
 
-xvfb-run -a -w 5 \
-$WINEVER Tribes2.exe -dedicated -mod Classic
+
+xvfb-run -a -w 5 $WINEVER Tribes2.exe -dedicated -mod Classic
