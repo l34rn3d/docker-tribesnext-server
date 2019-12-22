@@ -3,7 +3,7 @@
 ## Information
 Tribes 2 dedicated server patched to run in Lan mode and running within Docker under wine.
 
-*This is does not include TribesNext and uses a LAN patch to run in without it*
+*This is does not include TribesNext and uses a LAN patch to run without it*
 
 The image will pull required files and install them at build time (providing the sources are live). 
 
@@ -32,8 +32,8 @@ The container starts automatically when built.
 
 **Stop container**
 
-`docker ps`
-`docker stop <container-id>`
+```docker ps
+docker stop <container-id>```
 
 
 ## Server Customization
@@ -55,8 +55,6 @@ You can also override the start-server script by added one to _custom this will 
 You can modify the installer script to update the source locations of the required files.
 
 `tribesnext-server-installer` may also be used in standalone mode to install TribesNext RC2a on the host system under wine but your mileage may vary.
-
-Testing has been minimal but it is running the NET247 server so you can try it out at any point.
 
 
 ## SSH into server
