@@ -32,8 +32,10 @@ The container starts automatically when built.
 
 **Stop container**
 
-```docker ps
-docker stop <container-id>```
+```
+docker ps
+docker stop <container-id>
+```
 
 
 ## Server Customization
