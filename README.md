@@ -27,7 +27,8 @@ No volumes are used
 
 **Run a container**
 
-NB: the `--rm` arg will destroy the container when stopped; internal ports (666) can be mapped to available host ports (27999) per container
+NB: the `--rm` arg will destroy the container when stopped; internal ports (666) can be mapped to available host ports (27999) per container. 
+
 The container starts automatically when built.
 
 **Stop container**
@@ -39,7 +40,8 @@ docker stop <container-id>
 
 
 ## Server Customization
-You can customize the server at build time by dropping the appropriate files at the appropriate locations in `_custom/`, these will be copied into the image into the install location within the container at build time.
+You can customize the server at build time by dropping the appropriate files at the appropriate locations in `_custom/`, these will be copied into the image into the install location within the container at build time. 
+
 You can customize your server from the available options in the docker compose. These are set at build time.
 
 You can override the following defaults at build time
