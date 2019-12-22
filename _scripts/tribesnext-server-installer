@@ -7,10 +7,11 @@
 #
 
 SRVUSER=gameserv
-INSBASE=/home/$SRVUSER/.wine/drive_c/Dynamix/
+INSBASE=/home/$SRVUSER/.wine32/drive_c/Dynamix/
 export TMPBASE=/tmp/tribes2
-export WINEPREFIX=/home/$SRVUSER/.wine/
-export REQUIREMENTS=($WINEVER Xvfb)
+export WINEARCH=win32
+export WINEPREFIX=/home/$SRVUSER/.wine32/
+export REQUIREMENTS=(wine Xvfb)
 
 # -- server requirements
 function check_requirements {
@@ -51,12 +52,8 @@ fi
 
 # -- download files
 get_files tribes2gsi.exe                      "https://www.the-construct.net/downloads/tribes2/"                "$TMPBASE"
-get_files TribesNext_rc2a.exe                 "https://www.tribesnext.com/files/"                               "$TMPBASE"
-get_files ruby-1.9.0-2-i386-mswin32.zip       "https://ftp.ruby-lang.org/pub/ruby/binaries/mswin32/unstable/"   "$TMPBASE"
+get_files tribes2-lan-fix-win32.zip           "http://t2.plugh.us/"						        				"$TMPBASE"
 get_files classic_v152.zip                    "https://tribes2stats.com/files/mods/"                            "$TMPBASE"
-
-git clone 									  "https://github.com/ChocoTaco1/TacoServer/" 						"$TMPBASE/TacoServer"
-git clone 									  "https://github.com/ChocoTaco1/TacoMaps/" 						"$TMPBASE/TacoMaps"
 
 # -- some items require an headerless
 export DISPLAY=:99
@@ -67,9 +64,9 @@ export DISPLAY=:99
 sleep 1
 
 
-# -- extract the main installer, the silent installer is a lie! 
-echo "Installing tribes2gsi.exe..."
-/usr/bin/$WINEVER $TMPBASE/tribes2gsi.exe /x Z:\\tmp\\tribes2\\game
+# -- extract the main installer, the silent installer is a lie!
+echo "Installing T2..."
+/usr/bin/wine $TMPBASE/tribes2gsi.exe /x Z:\\tmp\\tribes2\\game
 
 
 # -- move all extract files into place
@@ -248,41 +245,30 @@ then
     mv $TMPBASE/game/weapTurretCode.cs $INSBASE/Tribes2/GameData/Classic/scripts/weapTurretCode.cs
     mv $TMPBASE/game/zz_Classic_client_v1.vl2 $INSBASE/Tribes2/GameData/base/zz_Classic_client_v1.vl2
     mv $TMPBASE/game/zz.ini $INSBASE/Tribes2/GameData/zz.ini
+
+    echo "T2 installed!"
 fi
 
-# -- install tribesnext silently
-echo "Installing TribesNext_rc2a.exe..."
-[ -f $TMPBASE/TribesNext_rc2a.exe ] && /usr/bin/$WINEVER $TMPBASE/TribesNext_rc2a.exe /S
-
-
-# -- update Ruby v1.9.0-2
-echo "Installing Ruby Interpreter v1.9.0-2..."
-[ -f $TMPBASE/ruby-1.9.0-2-i386-mswin32.zip ] && /usr/bin/unzip -o $TMPBASE/ruby-1.9.0-2-i386-mswin32.zip -d $TMPBASE/ruby 2>&1 > /dev/null
-if [ -f $TMPBASE/ruby-1.9.0-2-i386-mswin32.zip ]
-then
-    cp -r $TMPBASE/ruby/bin/msvcrt-ruby190.dll $INSBASE/Tribes2/GameData/msvcrt-ruby190.dll
-fi
-
-
+echo "Installing Classic Mod v1.5.2"
 # -- update Classic mod to v1.5.2
-echo "Installing Classic mod to v1.5.2..."
 [ -f $TMPBASE/classic_v152.zip ] && /usr/bin/unzip -o $TMPBASE/classic_v152.zip -d $TMPBASE/classic 2>&1 > /dev/null
 [ -f $TMPBASE/classic/classic_files_v152.zip ] && /usr/bin/unzip -o $TMPBASE/classic/classic_files_v152.zip -d $TMPBASE/classic 2>&1 > /dev/null
 # -- move all extract files into place
 if [ -f $TMPBASE/classic/classic_files_v152.zip ]
 then
-#   /home/gameserv/.wine/drive_c/Dynamix/Tribes2/GameData/Classic
+#   /home/gameserv/.wine32/drive_c/Dynamix/Tribes2/GameData/Classic
     mv -f $TMPBASE/classic/base/zz_classic_client_v1.vl2 $INSBASE/Tribes2/GameData/base/zz_Classic_client_v1.vl2
     cp -r $TMPBASE/classic/classic/. $INSBASE/Tribes2/GameData/Classic/.
 fi
 
-# -- install TacoServer
-echo "Installing TacoServer..."
-cp -r $TMPBASE/TacoServer/Classic/. $INSBASE/Tribes2/GameData/Classic/.
 
-# -- install TacoMaps
-echo "Installing TacoMaps..."
-mkdir -p $INSBASE/Tribes2/GameData/Classic/Maps
-cp -r $TMPBASE/TacoMaps/. $INSBASE/Tribes2/GameData/Classic/Maps/
+# -- install LAN fix
+echo "Installing Tribes2 Lan Fix (Win32)..."
+# -- run the bat and output the patched file (Tribes2d.exe)
+[ -f $TMPBASE/tribes2-lan-fix-win32.zip ] && /usr/bin/unzip -o $TMPBASE/tribes2-lan-fix-win32.zip -d $INSBASE/Tribes2/GameData 2>&1 > /dev/null
+cd $INSBASE/Tribes2/GameData/ && wineconsole xdelta3 decode -s Tribes2.exe tribes2-lan-fix-win32.xdelta Tribes2d.exe
+
+
+echo "Finished setting up T2!"
 
 exit 0

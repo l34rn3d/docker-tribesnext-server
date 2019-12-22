@@ -7,21 +7,77 @@ services:
       context: .
       dockerfile: ./Dockerfile
     environment:
-      # TODO
-      T2_SERVERNAME: "T2DockerTest"
+      T2_SERVERNAME: "Docker Test"
+      T2_MAX_PLAYERS: 64
+      T2_DEFAULT_MISSIONTYPE: "Lakrabbit"
+      T2_DEFAULT_MAP: "VaubanLak"
+      T2_PUGPW_ALWAYSON: 1
+      T2_PUG_PASSWORD: "pickup"
+      T2_PUGAUTOPW_TOURNY: 1
+      T2_TimeLimit: 45
+      T2_Telnet: 1
+      T2_Telnet_Port: 55555
+      T2_BaseRapeMin: 14
+      T2_TurretMin: 10
+      T2_CloakMin: 6
+      T2_ObserverTimeout: 1200
+      T2_BanTime: 1800
+      T2_EmptyServerReset: 1
+      T2_EmptyServerResetTime: 120
+      T2_PacketRate: 32
+      T2_PacketSize: 450
+      T2_NoSmurfs: 0
+      T2_ADMIN_LIST: ""
+      T2_SA_LIST: ""
+      T2_VoteAdmin: 1
+      T2_VoteAdminPlayerMin: 8
+      T2_Admin2AdminOthers: 1
+      T2_JoinBanner: "<color:3cb4b4><font:Sui Generis:22>Welcome\\n<color:3cb4b4><font:Univers:16>Get Mappacks at https://playt2.tk"
+      T2_JoinBannerLines: 3
+      T2_JoinBannerTime: 6
+      T2_LoadScreenColor1: "05edad"
+      T2_LoadScreenColor2: "29DEE7"
+      T2_LoadScreenColor3: "33CCCC"
+      T2_LoadScreenLine1: "Join Discord:"
+      T2_LoadScreenLine1_Msg: "https://discord.me/tribes2"
+      T2_LoadScreenLine2: "Game Modes:"
+      T2_LoadScreenLine2_Msg: "LakRabbit, Capture the Flag, DeathMatch, (Light Only) Capture the Flag"
+      T2_LoadScreenLine3: "Required Mappacks:"
+      T2_LoadScreenLine3_Msg: "S5, S8, TWL, TWL2 - Get them at http://playt2.tk"
+      T2_LoadScreenLine4: "Server Location:"
+      T2_LoadScreenLine4_Msg: "Chicago"
+      T2_LoadScreenLine5: "Server Infrastructure GitHub:"
+      T2_LoadScreenLine5_Msg: "https://github.com/amineo/docker-tribesnext-server"
+      T2_LoadScreenLine6: "TacoServer GitHub:"
+      T2_LoadScreenLine6_Msg: "https://github.com/ChocoTaco1/TacoServer"
+      T2_LoadScreenMOTD1: "Have fun!"
+      T2_LoadScreenMOTD2: " "
+      T2_LoadScreenMOTD3: " "
+      T2_LoadScreenMOTD4: " "
+    secrets:
+      - t2.admin.password
+      - t2.classic.superadmin.password
+      - t2.classic.telnet.password
+      - t2.classic.telnet.listen.password
 
     ports:
       - target: 28000
         published: 28000
         protocol: udp
         mode: host
-      - target: 666
+      - target: 55555
         protocol: tcp
-        published: 27999
+        published: 666
         mode: host
                    
     networks:
       - t2-net
+
+    healthcheck:
+      test: ["CMD-SHELL", "nc -z -u 127.0.0.1 28000 || exit 1"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
 
     deploy:
       replicas: 1
@@ -38,3 +94,17 @@ services:
 networks:
   t2-net:
     driver: overlay
+
+secrets:
+  t2.admin.password:
+    external: true
+    name: t2.admin.password.v1    
+  t2.classic.superadmin.password:
+    external: true
+    name: t2.classic.superadmin.password.v1
+  t2.classic.telnet.password:
+    external: true
+    name: t2.classic.telnet.password.v1
+  t2.classic.telnet.listen.password:
+    external: true
+    name: t2.classic.telnet.listen.password.v1    
