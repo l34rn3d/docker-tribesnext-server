@@ -1,7 +1,7 @@
 # Docker TribesNext
 
 ## Information
-Tribes 2 dedicated server patched to run in Lan mode and running within Docker under wine.
+Tribes 2 Loki Native Linux dedicated server patched to run in Lan mode and running within Docker.
 
 *This is does not include TribesNext and uses a LAN patch to run without it*
 
