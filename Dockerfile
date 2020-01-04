@@ -39,7 +39,7 @@ sudo unzip \
 # -- logging
 rsyslog \
 # -- utilities
-sed less nano vim file wget curl gnupg2 netcat software-properties-common xdelta3
+sed less nano vim file wget curl gnupg2 netcat software-properties-common xdelta3 tzdata
 
 
 # CLEAN IMAGE

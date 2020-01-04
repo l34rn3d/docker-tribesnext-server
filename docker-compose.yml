@@ -54,6 +54,7 @@ services:
       T2_LoadScreenMOTD2: "This is a Loki Linux Server!"
       T2_LoadScreenMOTD3: " "
       T2_LoadScreenMOTD4: " "
+      TZ: America/New_York
     secrets:
       - t2.admin.password
       - t2.classic.superadmin.password
