@@ -23,9 +23,7 @@ then
     mkdir -p $INSBASE/tribes2/Manual
     mkdir -p $INSBASE/tribes2/base/{music,lighting,textures,prefs}
     mkdir -p $INSBASE/tribes2/Classic/scripts/{turrets,weapons,autoexec,packs,vehicles}
-	mkdir -p $INSBASE/tribes2/Classic/stats
-	mkdir -p $INSBASE/tribes2/Classic/serverStats
-	mkdir -p $INSBASE/tribes2/Classic/logs
+	mkdir -p $INSBASE/tribes2/Classic/{logs,stats,serverStats}
 fi
 
 
@@ -77,5 +75,11 @@ then
     chmod 755 tribes2d-lan.dynamic
     echo "Finished setting up T2!"
 fi
+
+echo "Binding console.log to container logs"
+touch console.log
+touch $INSBASE/tribes2/console.log
+ln -sf /proc/1/fd/1 console.log
+ln -sf /proc/1/fd/1 $INSBASE/tribes2/console.log
 
 exit 0
