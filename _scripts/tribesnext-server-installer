@@ -32,7 +32,7 @@ fi
 get_files t2-linux.zip                   	  	"https://www.dropbox.com/s/ejemimzxjdswtvm/"          	        "$TMPBASE"
 get_files tribes2-lan-fix-linux.tar.gz        	"http://t2.plugh.us/"						        			"$TMPBASE"
 get_files classic_v152.zip                    	"https://tribes2stats.com/files/mods/"                          "$TMPBASE"
-get_files tribes2-lan-dynamic-console-fix.tar   "https://www.dropbox.com/s/1kf53wi3hycmsyd/"                    "$TMPBASE"
+get_files tribes2-lan-dynamic-console-fix.zip   "https://www.dropbox.com/s/rvgx7hdd7p9xyfp/"                    "$TMPBASE"
 
 
 # -- gimme a little time
@@ -76,19 +76,17 @@ then
     chmod 755 tribes2d-lan.dynamic
 fi
 
+
 # -- install Console fix
 echo "Installing Console Log Fix (Linux)..."
 # -- run the sh and output the patched file (tribes2d-lan-console.dynamic)
-if [ -f $TMPBASE/tribes2-lan-dynamic-console-fix.tar ]
-then
-    mkdir -p $TMPBASE/console-fix
-    tar -xzvf $TMPBASE/tribes2-lan-dynamic-console-fix.tar -C $TMPBASE/console-fix 2>&1 > /dev/null
-    cp -r $TMPBASE/console-fix/. $INSBASE/tribes2/.
-    cd $INSBASE/tribes2/
-    xdelta3 decode -s tribes2d-lan.dynamic tribes2-lan-dynamic-console-fix.xdelta tribes2d-lan-console.dynamic
-    chmod 755 tribes2d-lan-console.dynamic
-    echo "Finished setting up T2!"
-fi
+[ -f $TMPBASE/tribes2-lan-dynamic-console-fix.zip ] && /usr/bin/unzip -o $TMPBASE/tribes2-lan-dynamic-console-fix.zip -d $TMPBASE/console-fix 2>&1 > /dev/null
+cp -r $TMPBASE/console-fix/. $INSBASE/tribes2/.
+cd $INSBASE/tribes2/
+xdelta3 decode -s tribes2d-lan.dynamic tribes2-lan-dynamic-console-fix.xdelta tribes2d-lan-console.dynamic
+chmod 755 tribes2d-lan-console.dynamic
+echo "Finished setting up T2!"
+
 
 echo "Binding console/log to container logs"
 touch log
