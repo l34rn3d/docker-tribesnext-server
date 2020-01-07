@@ -20,7 +20,7 @@ function get_files {
 
 if [ ! -d $INSBASE ]
 then
-    mkdir -p $INSBASE/tribes2/Manual
+    mkdir -p $INSBASE/tribes2/{Manual,console}
     mkdir -p $INSBASE/tribes2/base/{music,lighting,textures,prefs}
     mkdir -p $INSBASE/tribes2/Classic/scripts/{turrets,weapons,autoexec,packs,vehicles}
 	mkdir -p $INSBASE/tribes2/Classic/{logs,stats,serverStats}
@@ -29,9 +29,10 @@ fi
 
 
 # -- download files
-get_files t2-linux.zip                   	  "https://www.dropbox.com/s/ejemimzxjdswtvm/"          	        "$TMPBASE"
-get_files tribes2-lan-fix-linux.tar.gz        "http://t2.plugh.us/"						        				"$TMPBASE"
-get_files classic_v152.zip                    "https://tribes2stats.com/files/mods/"                            "$TMPBASE"
+get_files t2-linux.zip                   	  	"https://www.dropbox.com/s/ejemimzxjdswtvm/"          	        "$TMPBASE"
+get_files tribes2-lan-fix-linux.tar.gz        	"http://t2.plugh.us/"						        			"$TMPBASE"
+get_files classic_v152.zip                    	"https://tribes2stats.com/files/mods/"                          "$TMPBASE"
+get_files tribes2-lan-dynamic-console-fix.tar   "https://www.dropbox.com/s/1kf53wi3hycmsyd/"                    "$TMPBASE"
 
 
 # -- gimme a little time
@@ -73,13 +74,26 @@ then
     cd $INSBASE/tribes2/
     xdelta3 decode -s tribes2d.dynamic tribes2-lan-fix-linux.xdelta tribes2d-lan.dynamic
     chmod 755 tribes2d-lan.dynamic
+fi
+
+# -- install Console fix
+echo "Installing Console Log Fix (Linux)..."
+# -- run the sh and output the patched file (tribes2d-lan-console.dynamic)
+if [ -f $TMPBASE/tribes2-lan-dynamic-console-fix.tar ]
+then
+    mkdir -p $TMPBASE/console-fix
+    tar -xzvf $TMPBASE/tribes2-lan-dynamic-console-fix.tar -C $TMPBASE/console-fix 2>&1 > /dev/null
+    cp -r $TMPBASE/console-fix/. $INSBASE/tribes2/.
+    cd $INSBASE/tribes2/
+    xdelta3 decode -s tribes2d-lan.dynamic tribes2-lan-dynamic-console-fix.xdelta tribes2d-lan-console.dynamic
+    chmod 755 tribes2d-lan-console.dynamic
     echo "Finished setting up T2!"
 fi
 
 echo "Binding console.log to container logs"
-touch console.log
-touch $INSBASE/tribes2/console.log
-ln -sf /proc/1/fd/1 console.log
-ln -sf /proc/1/fd/1 $INSBASE/tribes2/console.log
+touch log
+touch $INSBASE/tribes2/console/log
+ln -sf /proc/1/fd/1 log
+ln -sf /proc/1/fd/1 $INSBASE/tribes2/console/log
 
 exit 0
