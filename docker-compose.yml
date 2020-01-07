@@ -75,7 +75,7 @@ services:
       - serverStats:/home/gameserv/.loki/tribes2/Classic/serverStats
       - stats:/home/gameserv/.loki/tribes2/Classic/stats
       - logs:/home/gameserv/.loki/tribes2/Classic/logs
-      - console:/home/gameserv/.loki/tribes2/console
+      - console:/home/gameserv/.loki/tribes2/csl
 
     networks:
       - t2-net
