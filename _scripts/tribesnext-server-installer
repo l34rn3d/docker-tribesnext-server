@@ -32,7 +32,7 @@ fi
 get_files t2-linux.zip                   	  	"https://www.dropbox.com/s/ejemimzxjdswtvm/"          	        "$TMPBASE"
 get_files tribes2-lan-fix-linux.tar.gz        	"http://t2.plugh.us/"						        			"$TMPBASE"
 get_files classic_v152.zip                    	"https://tribes2stats.com/files/mods/"                          "$TMPBASE"
-get_files tribes2-lan-dynamic-console-fix.zip   "https://www.dropbox.com/s/p68bhyimvrjd5cu/"                    "$TMPBASE"
+get_files tribes2-lan-dynamic-console-fix.zip   "https://www.dropbox.com/s/91iut1qexkyvks8/"                    "$TMPBASE"
 
 
 # -- gimme a little time
