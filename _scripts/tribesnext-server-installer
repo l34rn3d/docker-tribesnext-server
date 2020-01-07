@@ -20,7 +20,7 @@ function get_files {
 
 if [ ! -d $INSBASE ]
 then
-    mkdir -p $INSBASE/tribes2/{Manual,csl}
+    mkdir -p $INSBASE/tribes2/{Manual}
     mkdir -p $INSBASE/tribes2/base/{music,lighting,textures,prefs}
     mkdir -p $INSBASE/tribes2/Classic/scripts/{turrets,weapons,autoexec,packs,vehicles}
 	mkdir -p $INSBASE/tribes2/Classic/{logs,stats,serverStats}
@@ -32,7 +32,6 @@ fi
 get_files t2-linux.zip                   	  	"https://www.dropbox.com/s/ejemimzxjdswtvm/"          	        "$TMPBASE"
 get_files tribes2-lan-fix-linux.tar.gz        	"http://t2.plugh.us/"						        			"$TMPBASE"
 get_files classic_v152.zip                    	"https://tribes2stats.com/files/mods/"                          "$TMPBASE"
-get_files tribes2-lan-dynamic-console-fix.zip   "https://www.dropbox.com/s/91iut1qexkyvks8/"                    "$TMPBASE"
 
 
 # -- gimme a little time
@@ -74,18 +73,14 @@ then
     cd $INSBASE/tribes2/
     xdelta3 decode -s tribes2d.dynamic tribes2-lan-fix-linux.xdelta tribes2d-lan.dynamic
     chmod 755 tribes2d-lan.dynamic
+	echo "Finished setting up T2!"
 fi
 
 
-# -- install Console fix
-echo "Installing Console Log Fix (Linux)..."
-# -- run the sh and output the patched file (tribes2d-lan-console.dynamic)
-[ -f $TMPBASE/tribes2-lan-dynamic-console-fix.zip ] && /usr/bin/unzip -o $TMPBASE/tribes2-lan-dynamic-console-fix.zip -d $TMPBASE/console-fix 2>&1 > /dev/null
-cp -r $TMPBASE/console-fix/. $INSBASE/tribes2/.
-cd $INSBASE/tribes2/
-xdelta3 decode -s tribes2d-lan.dynamic tribes2-lan-dynamic-console-fix.xdelta tribes2d-lan-console.dynamic
-chmod 755 tribes2d-lan-console.dynamic
-echo "Finished setting up T2!"
+echo "Binding console.log to console.log in logs volume"
+touch $INSBASE/tribes2/console.log
+[ -f $INSBASE/tribes2/Classic/logs/console.log ] && touch $INSBASE/tribes2/Classic/logs/console.log
+ln -sf $INSBASE/tribes2/Classic/logs/console.log $INSBASE/tribes2/console.log
 
 
 exit 0

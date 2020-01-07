@@ -21,4 +21,4 @@ chmod +x ${BASE_DIR}tribes2d-lan.dynamic
 # -- debug -- keep container running and dont launch the server
 #tail -f /dev/null
 
-/tmp/tribes2/tn_heartbeat & taskset -c 0 ./tribes2d-lan-console.dynamic 28000 -nologin -dedicated -mod Classic
+/tmp/tribes2/tn_heartbeat & taskset -c 0 ./tribes2d-lan.dynamic 28000 -nologin -dedicated -mod Classic
