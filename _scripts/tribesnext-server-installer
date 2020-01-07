@@ -89,9 +89,9 @@ echo "Finished setting up T2!"
 
 
 echo "Binding console/log to container logs"
-touch log
+touch csl.log
 touch $INSBASE/tribes2/csl/csl.log
-ln -sf /proc/1/fd/1 log
+ln -sf /proc/1/fd/1 csl.log
 ln -sf /proc/1/fd/1 $INSBASE/tribes2/csl/csl.log
 
 exit 0
