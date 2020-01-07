@@ -79,8 +79,8 @@ fi
 
 echo "Binding console.log to console.log in logs volume"
 touch $INSBASE/tribes2/console.log
-[ -f $INSBASE/tribes2/Classic/logs/console/console.log ] && touch $INSBASE/tribes2/Classic/logs/console/console.log
-ln -sf $INSBASE/tribes2/Classic/logs/console/console.log $INSBASE/tribes2/console.log
+[ -f $INSBASE/tribes2/Classic/logs/console.log ] && touch $INSBASE/tribes2/Classic/logs/console.log
+ln -sf $INSBASE/tribes2/Classic/logs/console.log $INSBASE/tribes2/console.log
 
 
 exit 0
