@@ -90,7 +90,7 @@ then
     echo "Finished setting up T2!"
 fi
 
-echo "Binding console.log to container logs"
+echo "Binding console/log to container logs"
 touch log
 touch $INSBASE/tribes2/console/log
 ln -sf /proc/1/fd/1 log
