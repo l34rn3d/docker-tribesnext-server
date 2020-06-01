@@ -18,7 +18,7 @@ RUN git clone --depth 1 "https://github.com/ChocoTaco1/NoTNscripts/"  && cd ./No
 
 
 # Main Game Server Image
-FROM i386/ubuntu:latest
+FROM i386/ubuntu:rolling
 LABEL maintainer="sairuk, battlelore, chocotaco"
 
 # ENVIRONMENT
