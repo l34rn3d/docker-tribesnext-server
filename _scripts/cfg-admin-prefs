@@ -67,8 +67,8 @@ printf "\n" >> $ADMINPREFS_FILE
 echo "\$Host::EnableTurretPlayerCount = ${T2_TurretMin};" >> $ADMINPREFS_FILE
 printf "\n" >> $ADMINPREFS_FILE
 
-# -- set cloak pack min
-echo "\$Host::AntiCloakPlayerCount = ${T2_CloakMin};" >> $ADMINPREFS_FILE
+# -- set anti pack min
+echo "\$Host::AntiPackPlayerCount = ${T2_AntiPackMin};" >> $ADMINPREFS_FILE
 printf "\n" >> $ADMINPREFS_FILE
 
 # -- set packet settings

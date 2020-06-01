@@ -20,7 +20,7 @@ services:
       T2_Telnet_Port: 55555
       T2_BaseRapeMin: 14
       T2_TurretMin: 10
-      T2_CloakMin: 6
+      T2_AntiPackMin: 6
       T2_ObserverTimeout: 1200
       T2_BanTime: 1800
       T2_EmptyServerReset: 1
@@ -32,20 +32,20 @@ services:
       T2_SA_LIST: ""
       T2_VoteAdmin: 1
       T2_Admin2AdminOthers: 1
-      T2_JoinBanner: "<color:3cb4b4><font:Sui Generis:22>Welcome\\n<color:3cb4b4><font:Univers:16>Get Mappacks at https://playt2.tk"
+      T2_JoinBanner: "<color:3cb4b4><font:Sui Generis:22>Docker Test\n<color:3cb4b4><font:Univers:16>Server Hosted/Provided by Branzone/Ravin\n<color:3cb4b4><font:Univers:16>Get Mappacks at https://playt2.com/"
       T2_JoinBannerLines: 3
       T2_JoinBannerTime: 6
       T2_LoadScreenColor1: "05edad"
       T2_LoadScreenColor2: "29DEE7"
       T2_LoadScreenColor3: "33CCCC"
       T2_LoadScreenLine1: "Join Discord:"
-      T2_LoadScreenLine1_Msg: "https://discord.me/tribes2"
+      T2_LoadScreenLine1_Msg: "<a:playt2.com/discord>playt2.com/discord</a>"
       T2_LoadScreenLine2: "Game Modes:"
       T2_LoadScreenLine2_Msg: "LakRabbit, Capture the Flag, DeathMatch, (Light Only) Capture the Flag"
-      T2_LoadScreenLine3: "Required Mappacks:"
-      T2_LoadScreenLine3_Msg: "S5, S8, TWL, TWL2 - Get them at http://playt2.tk"
+      T2_LoadScreenLine3: "Get Mappacks:"
+      T2_LoadScreenLine3_Msg: "<a:playt2.com/mappacks>playt2.com/mappacks</a>"
       T2_LoadScreenLine4: "Server Location:"
-      T2_LoadScreenLine4_Msg: "Chicago"
+      T2_LoadScreenLine4_Msg: "Dallas"
       T2_LoadScreenLine5: "Server Infrastructure GitHub:"
       T2_LoadScreenLine5_Msg: "https://github.com/amineo/docker-tribesnext-server"
       T2_LoadScreenLine6: "TacoServer GitHub:"
