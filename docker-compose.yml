@@ -32,7 +32,7 @@ services:
       T2_SA_LIST: ""
       T2_VoteAdmin: 0
       T2_Admin2AdminOthers: 0
-      T2_JoinBanner: "<color:3cb4b4><font:Sui Generis:22>Docker Test\\n<color:3cb4b4><font:Univers:16>Server Hosted/Provided by Branzone/Ravin\\n<color:3cb4b4><font:Univers:16>Get Mappacks at https://playt2.com/"
+      T2_JoinBanner: "<color:3cb4b4><font:Sui Generis:22>Docker Test\\n<color:3cb4b4><font:Univers:16>Server Hosted by Someone\\n<color:3cb4b4><font:Univers:16>Get Mappacks at https://playt2.com/"
       T2_JoinBannerLines: 3
       T2_JoinBannerTime: 6
       T2_LoadScreenColor1: "05edad"
@@ -45,7 +45,7 @@ services:
       T2_LoadScreenLine3: "Get Mappacks:"
       T2_LoadScreenLine3_Msg: "<a:playt2.com/mappacks>playt2.com/mappacks</a>"
       T2_LoadScreenLine4: "Server Location:"
-      T2_LoadScreenLine4_Msg: "Dallas"
+      T2_LoadScreenLine4_Msg: "Somewhere"
       T2_LoadScreenLine5: "Server Infrastructure GitHub:"
       T2_LoadScreenLine5_Msg: "https://github.com/amineo/docker-tribesnext-server"
       T2_LoadScreenLine6: "TacoServer GitHub:"
@@ -74,6 +74,7 @@ services:
       - serverStats:/home/gameserv/.loki/tribes2/Classic/serverStats
       - stats:/home/gameserv/.loki/tribes2/Classic/stats
       - logs:/home/gameserv/.loki/tribes2/Classic/logs
+      - gamedata:/home/gameserv/.loki/tribes2/
 
     networks:
       - t2-net
@@ -100,6 +101,7 @@ volumes:
   serverStats:
   stats:
   logs:
+  gamedata:
   
 networks:
   t2-net:
