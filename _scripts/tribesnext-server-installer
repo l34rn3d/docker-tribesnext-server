@@ -29,7 +29,7 @@ fi
 
 
 # -- download files
-get_files t2-linux.zip                   	  	"https://www.dropbox.com/s/ejemimzxjdswtvm/"          	        "$TMPBASE"
+get_files t2-linux.zip                   	  	"https://www.dropbox.com/scl/fi/btw69nqxg1y8skwxqv5dz/t2-linux.zip?rlkey=cnjsvm458lb94p4xyry9g23vk&"          	        "$TMPBASE"
 get_files tribes2-lan-fix-linux.tar.gz        	"http://t2.plugh.us/"						        			"$TMPBASE"
 get_files classic_v152.zip                    	"https://tribes2stats.com/files/mods/"                          "$TMPBASE"
 
@@ -72,7 +72,7 @@ then
     cp -r $TMPBASE/lan-fix/. $INSBASE/tribes2/.
     cd $INSBASE/tribes2/
     xdelta3 decode -s tribes2d.dynamic tribes2-lan-fix-linux.xdelta tribes2d-lan.dynamic
-    chmod 755 tribes2d-lan.dynamic
+    chmod +x tribes2d-lan.dynamic
 	echo "Finished setting up T2!"
 fi
 

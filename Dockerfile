@@ -42,7 +42,7 @@ sudo unzip \
 # -- logging
 rsyslog \
 # -- utilities
-sed less nano vim file wget curl gnupg2 netcat software-properties-common xdelta3 tzdata
+sed less nano vim file wget curl gnupg2 netcat-traditional software-properties-common xdelta3 tzdata
 
 #RUN timedatectl set-timezone ${TZ}
 
@@ -63,8 +63,8 @@ RUN ${SRVDIR}/tribesnext-server-installer
 
 
 # SCRIPT - server (default)
-COPY _scripts/start-server ${INSTDIR}/start-server
-RUN chmod +x ${INSTDIR}/start-server
+COPY _scripts/start-server ${SRVDIR}
+RUN chmod +x ${SRVDIR}/start-server
 
 # TacoServer - Pull in resources from builder
 COPY --from=tacobuilder /tmp/TacoServer/Classic/. ${INSTDIR}/Classic/.
