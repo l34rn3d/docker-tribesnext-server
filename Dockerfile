@@ -8,7 +8,7 @@ RUN apk --update add git sed less wget nano openssh && \
 
 WORKDIR /tmp
 
-RUN git clone --depth 1 "https://github.com/ChocoTaco1/TacoServer/" && cd ./TacoServer 
+RUN git clone --depth 1 "https://github.com/ChocoTaco1/TacoServer/" && cd ./TacoServer
 WORKDIR /tmp
 
 RUN git clone --depth 1 "https://github.com/ChocoTaco1/TacoMaps/"  && cd ./TacoMaps
@@ -18,7 +18,7 @@ RUN git clone --depth 1 "https://github.com/ChocoTaco1/NoTNscripts/"  && cd ./No
 
 
 # Main Game Server Image
-FROM i386/ubuntu:bionic
+FROM i386/debian:bookworm
 LABEL maintainer="sairuk, battlelore, chocotaco"
 
 # ENVIRONMENT
@@ -103,7 +103,7 @@ RUN chown -R ${SRVUSER}: /home/${SRVUSER}
 EXPOSE \
 # -- tribes
 666/tcp \
-28000/udp 
+28000/udp
 
 USER ${SRVUSER}
 WORKDIR ${INSTDIR}

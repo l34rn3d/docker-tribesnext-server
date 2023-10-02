@@ -8,7 +8,7 @@ services:
       dockerfile: ./Dockerfile
     environment:
       TZ: "America/New_York"
-      T2_SERVERNAME: "Docker Test"
+      T2_SERVERNAME: "Docker Loki Test"
       T2_MAX_PLAYERS: 64
       T2_DEFAULT_MISSIONTYPE: "Lakrabbit"
       T2_DEFAULT_MAP: "VaubanLak"
@@ -32,7 +32,7 @@ services:
       T2_SA_LIST: ""
       T2_VoteAdmin: 0
       T2_Admin2AdminOthers: 0
-      T2_JoinBanner: "<color:3cb4b4><font:Sui Generis:22>Docker Test\\n<color:3cb4b4><font:Univers:16>Server Hosted by Someone\\n<color:3cb4b4><font:Univers:16>Get Mappacks at https://playt2.com/"
+      T2_JoinBanner: "<color:3cb4b4><font:Sui Generis:22>Docker Loki Test\\n<color:3cb4b4><font:Univers:16>Server Hosted by Someone\\n<color:3cb4b4><font:Univers:16>Get Mappacks at https://playt2.com/"
       T2_JoinBannerLines: 3
       T2_JoinBannerTime: 6
       T2_LoadScreenColor1: "05edad"
@@ -102,7 +102,7 @@ volumes:
   stats:
   logs:
   gamedata:
-  
+
 networks:
   t2-net:
     driver: overlay
@@ -110,7 +110,7 @@ networks:
 secrets:
   t2.admin.password:
     external: true
-    name: t2.admin.password.v1    
+    name: t2.admin.password.v1
   t2.classic.superadmin.password:
     external: true
     name: t2.classic.superadmin.password.v1
@@ -119,4 +119,4 @@ secrets:
     name: t2.classic.telnet.password.v1
   t2.classic.telnet.listen.password:
     external: true
-    name: t2.classic.telnet.listen.password.v1    
+    name: t2.classic.telnet.listen.password.v1
