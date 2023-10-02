@@ -63,8 +63,8 @@ RUN ${SRVDIR}/tribesnext-server-installer
 
 
 # SCRIPT - server (default)
-COPY _scripts/start-server ${SRVDIR}
-RUN chmod +x ${SRVDIR}/start-server
+COPY _scripts/start-server ${INSTDIR}/start-server
+RUN chmod +x ${INSTDIR}/start-server
 
 # TacoServer - Pull in resources from builder
 COPY --from=tacobuilder /tmp/TacoServer/Classic/. ${INSTDIR}/Classic/.
