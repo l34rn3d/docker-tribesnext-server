@@ -8,7 +8,7 @@ services:
       dockerfile: ./Dockerfile
     environment:
       TZ: "America/New_York"
-      T2_SERVERNAME: "Docker Loki Test"
+      T2_SERVERNAME: "DADlan AU"
       T2_MAX_PLAYERS: 64
       T2_DEFAULT_MISSIONTYPE: "Lakrabbit"
       T2_DEFAULT_MAP: "VaubanLak"
@@ -32,7 +32,7 @@ services:
       T2_SA_LIST: ""
       T2_VoteAdmin: 0
       T2_Admin2AdminOthers: 0
-      T2_JoinBanner: "<color:3cb4b4><font:Sui Generis:22>Docker Loki Test\\n<color:3cb4b4><font:Univers:16>Server Hosted by Someone\\n<color:3cb4b4><font:Univers:16>Get Mappacks at https://playt2.com/"
+      T2_JoinBanner: "<color:3cb4b4><font:Sui Generis:22>DADlan AU\\n<color:3cb4b4><font:Univers:16>Server Hosted by Someone\\n<color:3cb4b4><font:Univers:16>Get Mappacks at https://playt2.com/"
       T2_JoinBannerLines: 3
       T2_JoinBannerTime: 6
       T2_LoadScreenColor1: "05edad"
